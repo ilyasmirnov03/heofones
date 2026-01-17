@@ -9,6 +9,26 @@ services:
       - 5432:5432
     volumes:
       - db-data:/var/lib/postgresql
+    profiles:
+      - local
+
+  localstack:
+    container_name: "${LOCALSTACK_DOCKER_NAME:-localstack-main}"
+    image: localstack/localstack
+    ports:
+      - "127.0.0.1:4566:4566"
+      - "127.0.0.1:4510-4559:4510-4559"
+    environment:
+      - DEBUG=${DEBUG:-0}
+      - SERVICES=sqs,ssm
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    volumes:
+      - "db-data:/var/lib/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    profiles:
+      - aws
 
 volumes:
   db-data:
