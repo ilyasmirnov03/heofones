@@ -2,6 +2,8 @@ import { join } from 'node:path'
 import AutoLoad, { AutoloadPluginOptions } from '@fastify/autoload'
 import { FastifyPluginAsync, FastifyServerOptions } from 'fastify'
 import { GLOBAL_PREFIX } from './constant/global-prefix'
+import fastifyPostgres from '@fastify/postgres'
+import 'dotenv/config';
 
 export interface AppOptions extends FastifyServerOptions, Partial<AutoloadPluginOptions> {
 
@@ -33,6 +35,13 @@ const app: FastifyPluginAsync<AppOptions> = async (
       prefix: GLOBAL_PREFIX,
     }
   })
+
+  fastify.register(fastifyPostgres, {
+    user: process.env.POSTGRES_USER,
+    password: process.env.POSTGRES_PASSWORD,
+    database: process.env.POSTGRES_DB,
+    port: 5432,
+  });
 }
 
 export default app

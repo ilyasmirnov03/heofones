@@ -18,7 +18,12 @@
     "type": "git",
     "url": "git+https://github.com/ilyasmirnov03/heofones.git"
   },
-  "keywords": ["api", "game", "fastify", "typescript"],
+  "keywords": [
+    "api",
+    "game",
+    "fastify",
+    "typescript"
+  ],
   "author": "ilyasmirnov03",
   "license": "GPL-3.0",
   "bugs": {
@@ -26,18 +31,21 @@
   },
   "homepage": "https://github.com/ilyasmirnov03/heofones#readme",
   "dependencies": {
-    "fastify": "^5.0.0",
-    "fastify-plugin": "^5.0.0",
     "@fastify/autoload": "^6.0.0",
+    "@fastify/postgres": "^6.0.2",
     "@fastify/sensible": "^6.0.0",
-    "fastify-cli": "^7.4.1"
+    "dotenv": "^17.2.3",
+    "fastify": "^5.0.0",
+    "fastify-cli": "^7.4.1",
+    "fastify-plugin": "^5.0.0"
   },
   "devDependencies": {
     "@types/node": "^24.0.8",
+    "@types/pg": "^8.16.0",
     "c8": "^10.1.2",
-    "ts-node": "^10.4.0",
     "concurrently": "^9.0.0",
     "fastify-tsconfig": "^3.0.0",
+    "ts-node": "^10.4.0",
     "typescript": "~5.9.2"
   }
 }
