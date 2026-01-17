@@ -2,7 +2,18 @@
 
 A multiplayer RPG played through an open API.
 
+## Technical overview
+
+Heofones API is built with fastify framework and TypeScript. It uses the PostgreSQL database and integrates Prisma ORM.
+Local development environment is available in docker-compose.yml under the `local` profile.
+
 ## Start development
+
+You have to generate a Prisma client before you can start developing:
+
+```shell
+npm run prisma:generate
+```
 
 In the project directory, you can run:
 
