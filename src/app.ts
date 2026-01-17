@@ -1,8 +1,7 @@
 import { join } from 'node:path'
 import AutoLoad, { AutoloadPluginOptions } from '@fastify/autoload'
 import { FastifyPluginAsync, FastifyServerOptions } from 'fastify'
-import { GLOBAL_PREFIX } from './constant/global-prefix'
-import fastifyPostgres from '@fastify/postgres'
+import { GLOBAL_PREFIX } from './constant/global-prefix.js'
 import 'dotenv/config';
 
 export interface AppOptions extends FastifyServerOptions, Partial<AutoloadPluginOptions> {
@@ -21,7 +20,7 @@ const app: FastifyPluginAsync<AppOptions> = async (
   // through your application
   // eslint-disable-next-line no-void
   void fastify.register(AutoLoad, {
-    dir: join(__dirname, 'plugins'),
+    dir: join(import.meta.dirname, 'plugins'),
     options: opts
   })
 
@@ -29,20 +28,12 @@ const app: FastifyPluginAsync<AppOptions> = async (
   // define your routes in one of these
   // eslint-disable-next-line no-void
   void fastify.register(AutoLoad, {
-    dir: join(__dirname, 'routes'),
+    dir: join(import.meta.dirname, 'routes'),
     options: {
       ...opts,
       prefix: GLOBAL_PREFIX,
     }
   })
-
-  fastify.register(fastifyPostgres, {
-    user: process.env.POSTGRES_USER,
-    password: process.env.POSTGRES_PASSWORD,
-    database: process.env.POSTGRES_DB,
-    host: process.env.POSTGRES_HOST,
-    port: 5432,
-  });
 }
 
 export default app

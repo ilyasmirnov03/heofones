@@ -66,3 +66,8 @@ dist
 
 # environment
 .env
+
+# prisma
+/src/generated/prisma
+
+/generated/prisma
