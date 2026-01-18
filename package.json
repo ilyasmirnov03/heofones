@@ -33,14 +33,14 @@
   },
   "homepage": "https://github.com/ilyasmirnov03/heofones#readme",
   "dependencies": {
-    "@fastify/autoload": "^6.0.0",
-    "@fastify/sensible": "^6.0.0",
+    "@fastify/autoload": "^6.3.1",
+    "@fastify/sensible": "^6.0.4",
     "@prisma/adapter-pg": "^7.2.0",
     "@prisma/client": "^7.2.0",
     "dotenv": "^17.2.3",
-    "fastify": "^5.0.0",
+    "fastify": "^5.7.1",
     "fastify-cli": "^7.4.1",
-    "fastify-plugin": "^5.0.0",
+    "fastify-plugin": "^5.1.0",
     "pg": "^8.17.1"
   },
   "devDependencies": {
